@@ -1,0 +1,24 @@
+From 016f3e3cab0cf1fd2a3c9de458314a19e7d1799b Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Thu, 17 Sep 2026 11:42:14 +0200
+Subject: [PATCH 06/12] avoid downloading by git submodules
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 1d2b8a97b..0526f6a90 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15257,6 +15257,7 @@ AC_SUBST(ALL_LANGS)
+ AC_DEFINE_UNQUOTED(WITH_LANG,"$WITH_LANG")
+ AC_SUBST(WITH_LANG)
+ AC_SUBST(WITH_LANG_LIST)
++GIT_NEEDED_SUBMODULES=""
+ AC_SUBST(GIT_NEEDED_SUBMODULES)
+ 
+ WITH_POOR_HELP_LOCALIZATIONS=
+-- 
+2.53.0
+

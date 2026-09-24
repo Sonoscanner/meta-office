@@ -26,16 +26,18 @@ DEPENDS += " \
     unzip-native \
     liblangtag-native \
     lpsolve-native \
-    mdds-2.0-native \
+    mdds-3.0-native \
 "
+
+# file://0001-saxparser-output-calling-parametrs-for-debug.patch
+# file://0002-cppuhelper-defaultbootstrap-output-debug-information.patch
+# file://0003-add-gengal-debug-information.patch
+# file://0004-gengal-fix-path-to-redirectrc.patch
+# file://0005-Do-not-check-download-lib-unnecessary-for-native-bui.patch
+# file://0006-Do-not-fetch-fonts-for-native-tools.patch
 
 SRC_URI += " \
     file://0001-saxparser-output-calling-parametrs-for-debug.patch \
-    file://0002-cppuhelper-defaultbootstrap-output-debug-information.patch \
-    file://0003-add-gengal-debug-information.patch \
-    file://0004-gengal-fix-path-to-redirectrc.patch \
-    file://0005-Do-not-check-download-lib-unnecessary-for-native-bui.patch \
-    file://0006-Do-not-fetch-fonts-for-native-tools.patch \
 "
 
 EXTRA_OECONF += " \
@@ -82,6 +84,10 @@ LDFLAGS += "-ldl"
 
 do_compile() {
     BUILDDIR=${B} oe_runmake cross-toolset
+
+    BUILDDIR=${B} oe_runmake Executable_concat-deps
+    BUILDDIR=${B} oe_runmake Executable_genconv_dict
+
     # gengal was not designed for build - we need to add it and it's dependencies
     BUILDDIR=${B} oe_runmake Executable_gengal
     BUILDDIR=${B} oe_runmake Library_ucb1
@@ -105,6 +111,7 @@ LOBUILDTOOLS = " \
     ulfex \
     unoidl-check \
     xrmex \
+    concat-deps \
 "
 
 do_install() {
@@ -115,11 +122,13 @@ do_install() {
     install "${B}/workdir/Headers/Executable/unoidl-write" ${D}/${bindir}
 
     # icu creates a gendict. To avoid conflicts rename in sysroot
-    install "${B}/workdir/LinkTarget/Executable/gendict" ${D}/${bindir}/gendict_libre
+    # install "${B}/workdir/LinkTarget/Executable/gendict" ${D}/${bindir}/gendict_libre
 
     # install sdk binaries
     install ${B}/instdir/sdk/bin/* ${D}/${bindir}
 
+    # not sure why but 2 services.rdb are generated, one in the service folder and one the program folder
+    rm -f ${B}/instdir/program/services/services.rdb
     # install libraries and defaults
     install -d ${D}/${libdir}
     for name in `find ${B}/instdir/program -type f` ; do
@@ -138,4 +147,8 @@ do_install() {
     # unoconv
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/git/unoconv/unoconv ${D}/${bindir}
+
+    # move zxcvbn-c dict to libdir - we'll need it for cross building
+    install -d ${D}/${libdir}/zxcvbn-c/
+    cp -rf ${B}/workdir/UnpackedTarball/zxcvbn-c/dict-src.h ${D}/${libdir}/zxcvbn-c/
 }

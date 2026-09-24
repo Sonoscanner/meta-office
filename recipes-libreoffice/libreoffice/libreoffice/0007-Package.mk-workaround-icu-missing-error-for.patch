@@ -1,0 +1,25 @@
+From 437a55e2b044c47b19d29e2b3a0174a5e4a4c50c Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Thu, 17 Sep 2026 12:27:32 +0200
+Subject: [PATCH 07/12] Package.mk: workaround icu missing error for 
+ --without-galleries
+
+---
+ solenv/gbuild/Package.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/solenv/gbuild/Package.mk b/solenv/gbuild/Package.mk
+index 6f054a549..3b51478aa 100644
+--- a/solenv/gbuild/Package.mk
++++ b/solenv/gbuild/Package.mk
+@@ -80,7 +80,6 @@ $(call gb_Package_get_preparation_target,%) :
+ $(call gb_Package_get_target,%) :
+ 	$(call gb_Output_announce,$*,$(true),PKG,2)
+ 	$(call gb_Trace_StartRange,$*,PKG)
+-	$(if $(PACKAGE_DEFINED),,$(call gb_Output_error,$(RDEPENDS) depend(s) on package $* which does not exist.))
+ 	$(file >$@,$(sort $(FILES)))
+ 	$(call gb_Trace_EndRange,$*,PKG)
+ 
+-- 
+2.53.0
+

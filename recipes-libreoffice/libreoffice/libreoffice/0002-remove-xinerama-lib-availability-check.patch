@@ -1,0 +1,55 @@
+From f32fa69f3b1fe3f5cb47700c5c046e8685994ce7 Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Thu, 17 Sep 2026 10:28:28 +0200
+Subject: [PATCH 02/12] remove xinerama lib availability check
+
+---
+ configure.ac | 29 +++++------------------------
+ 1 file changed, 5 insertions(+), 24 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a62d41d1c..a9cbbd025 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -14618,33 +14618,14 @@ if test "$USING_X11" = TRUE; then
+     else
+         XINERAMALIB="$x_libraries"
+     fi
+-    if test -e "$XINERAMALIB/libXinerama.so" -a -e "$XINERAMALIB/libXinerama.a"; then
+-        # we have both versions, let the user decide but use the dynamic one
+-        # per default
+-        USE_XINERAMA=TRUE
+-        if test -z "$with_static_xinerama" -o -n "$with_system_libs"; then
+-            XINERAMA_LINK=dynamic
+-        else
+-            XINERAMA_LINK=static
+-        fi
+-    elif test -e "$XINERAMALIB/libXinerama.so" -a ! -e "$XINERAMALIB/libXinerama.a"; then
+-        # we have only the dynamic version
+-        USE_XINERAMA=TRUE
++
++    USE_XINERAMA=TRUE
++    if test -z "$with_static_xinerama" -o -n "$with_system_libs"; then
+         XINERAMA_LINK=dynamic
+-    elif test -e "$XINERAMALIB/libXinerama.a"; then
+-        # static version
+-        if echo $host_cpu | $GREP -E 'i[[3456]]86' 2>/dev/null >/dev/null; then
+-            USE_XINERAMA=TRUE
+-            XINERAMA_LINK=static
+-        else
+-            USE_XINERAMA=
+-            XINERAMA_LINK=none
+-        fi
+     else
+-        # no Xinerama
+-        USE_XINERAMA=
+-        XINERAMA_LINK=none
++        XINERAMA_LINK=static
+     fi
++
+     if test "$USE_XINERAMA" = "TRUE"; then
+         AC_MSG_RESULT([yes, with $XINERAMA_LINK linking])
+         AC_CHECK_HEADER(X11/extensions/Xinerama.h, [],
+-- 
+2.53.0
+

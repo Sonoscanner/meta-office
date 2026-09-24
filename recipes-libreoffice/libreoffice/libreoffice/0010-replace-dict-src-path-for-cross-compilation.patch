@@ -1,0 +1,25 @@
+From 01baccda4bb162ea3bfc7ac6e8d4898d479dd634 Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Fri, 18 Sep 2026 17:42:14 +0200
+Subject: [PATCH 10/12] replace dict src path for cross compilation
+
+---
+ external/zxcvbn-c/ExternalProject_zxcvbn-c.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/external/zxcvbn-c/ExternalProject_zxcvbn-c.mk b/external/zxcvbn-c/ExternalProject_zxcvbn-c.mk
+index bd652464c..3c4b4d9e8 100644
+--- a/external/zxcvbn-c/ExternalProject_zxcvbn-c.mk
++++ b/external/zxcvbn-c/ExternalProject_zxcvbn-c.mk
+@@ -22,7 +22,7 @@ $(call gb_ExternalProject_get_state_target,zxcvbn-c,generate-dictionary-nodes):
+ 	$(call gb_Trace_StartRange,zxcvbn-c,EXTERNAL)
+ 	$(call gb_ExternalProject_run,generate-dictionary-nodes,\
+ 		$(if $(CROSS_COMPILING),\
+-			cp $(WORKDIR_FOR_BUILD)/UnpackedTarball/zxcvbn-c/dict-src.h \
++			cp %STAGING_LIBDIR_NATIVE%/zxcvbn-c/dict-src.h \
+ 				$(WORKDIR)/UnpackedTarball/zxcvbn-c/dict-src.h \
+ 		,\
+ 			$(MAKE) dict-src.h \
+-- 
+2.53.0
+

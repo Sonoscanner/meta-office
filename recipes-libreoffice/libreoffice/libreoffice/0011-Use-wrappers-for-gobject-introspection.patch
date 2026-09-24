@@ -1,0 +1,34 @@
+From 92ecc734e0cba2d936b417196b1744aef84d3b27 Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Mon, 21 Sep 2026 10:38:35 +0200
+Subject: [PATCH 11/12] Use wrappers for gobject-introspection
+
+---
+ sysui/CustomTarget_share.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sysui/CustomTarget_share.mk b/sysui/CustomTarget_share.mk
+index 0a2fe2ef1..e3cc8b392 100644
+--- a/sysui/CustomTarget_share.mk
++++ b/sysui/CustomTarget_share.mk
+@@ -165,7 +165,7 @@ ifneq ($(INTROSPECTION_SCANNER),)
+ $(share_WORKDIR)/%/LOKDocView-0.1.gir: \
+ 		$(call gb_Library_get_target,libreofficekitgtk)
+ 	mkdir -p $(dir $@)
+-	PYTHONWARNINGS=default g-ir-scanner "${SRCDIR}/include/LibreOfficeKit/LibreOfficeKitGtk.h" \
++	PYTHONWARNINGS=default ${INTROSPECTION_SCANNER} "${SRCDIR}/include/LibreOfficeKit/LibreOfficeKitGtk.h" \
+ 				 "${SRCDIR}/libreofficekit/source/gtk/lokdocview.cxx" \
+                  `${PKG_CONFIG} --cflags-only-I gobject-introspection-1.0 gtk+-3.0` \
+ 				 -I"${SRCDIR}/include/" \
+@@ -177,7 +177,7 @@ $(share_WORKDIR)/%/LOKDocView-0.1.gir: \
+ 				 --output="$@" --warn-all --no-libtool
+ 
+ $(share_WORKDIR)/%/LOKDocView-0.1.typelib: $(share_WORKDIR)/%/LOKDocView-0.1.gir
+-	g-ir-compiler "$<" --output="$@"
++	${INTROSPECTION_COMPILER} "$<" --output="$@"
+ 
+ endif
+ 
+-- 
+2.53.0
+

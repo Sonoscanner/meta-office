@@ -1,0 +1,25 @@
+From 13bc027ebfe930d89e4144252fd5cda3ec2ca18f Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Fri, 18 Sep 2026 16:06:26 +0200
+Subject: [PATCH 09/12] use native path for rdb saxparser
+
+---
+ RepositoryExternal.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/RepositoryExternal.mk b/RepositoryExternal.mk
+index 45ac4f26b..8ce235b6c 100644
+--- a/RepositoryExternal.mk
++++ b/RepositoryExternal.mk
+@@ -4146,7 +4146,7 @@ define gb_Executable__register_saxparser
+ $(call gb_Executable_add_runtime_dependencies,saxparser,\
+ 	$(call gb_Library_get_target_for_build,$(CPPU_ENV_FOR_BUILD)_uno) \
+ 	$(call gb_Package_get_target_for_build,instsetoo_native_setup_ure) \
+-	$(call gb_Rdb_get_target_for_build,saxparser) \
++	$(call gb_Rdb_get_target_for_build_native,saxparser) \
+ 	$(INSTROOT_FOR_BUILD)/$(LIBO_URE_MISC_FOLDER_FOR_BUILD)/services.rdb \
+ 	$(call gb_UnoApi_get_target_for_build,udkapi) \
+ )
+-- 
+2.53.0
+

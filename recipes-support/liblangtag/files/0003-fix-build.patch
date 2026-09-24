@@ -1,0 +1,129 @@
+From f33f7ffb89c9278d864dec48e53fce642fd11ce2 Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Tue, 15 Sep 2026 15:43:52 +0200
+Subject: [PATCH] fix build
+
+---
+ extensions/lt-ext-ldml-t.c |  7 ++++---
+ extensions/lt-ext-ldml-u.c |  7 ++++---
+ liblangtag/lt-tag.c        | 15 ++++++++-------
+ 3 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/extensions/lt-ext-ldml-t.c b/extensions/lt-ext-ldml-t.c
+index 4b58718..31a88b7 100644
+--- a/extensions/lt-ext-ldml-t.c
++++ b/extensions/lt-ext-ldml-t.c
+@@ -1,11 +1,11 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+-/* 
++/*
+  * lt-ext-ldml-t.c
+  * Copyright (C) 2011-2012 Akira TAGOH
+- * 
++ *
+  * Authors:
+  *   Akira TAGOH  <akira@tagoh.org>
+- * 
++ *
+  * You may distribute under the terms of either the GNU
+  * Lesser General Public License or the Mozilla Public
+  * License, as specified in the README file.
+@@ -16,6 +16,7 @@
+ 
+ #include <ctype.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <libxml/xpath.h>
+ #include "lt-error.h"
+ #include "lt-ext-module.h"
+diff --git a/extensions/lt-ext-ldml-u.c b/extensions/lt-ext-ldml-u.c
+index bd63ee9..dff58b2 100644
+--- a/extensions/lt-ext-ldml-u.c
++++ b/extensions/lt-ext-ldml-u.c
+@@ -1,11 +1,11 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+-/* 
++/*
+  * lt-ext-ldml-u.c
+  * Copyright (C) 2011-2012 Akira TAGOH
+- * 
++ *
+  * Authors:
+  *   Akira TAGOH  <akira@tagoh.org>
+- * 
++ *
+  * You may distribute under the terms of either the GNU
+  * Lesser General Public License or the Mozilla Public
+  * License, as specified in the README file.
+@@ -16,6 +16,7 @@
+ 
+ #include "lt-stdint.h"
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <libxml/xpath.h>
+ #include "lt-error.h"
+diff --git a/liblangtag/lt-tag.c b/liblangtag/lt-tag.c
+index 84f504c..8889ae0 100644
+--- a/liblangtag/lt-tag.c
++++ b/liblangtag/lt-tag.c
+@@ -1,11 +1,11 @@
+ /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+-/* 
++/*
+  * lt-tag.c
+  * Copyright (C) 2011-2015 Akira TAGOH
+- * 
++ *
+  * Authors:
+  *   Akira TAGOH  <akira@tagoh.org>
+- * 
++ *
+  * You may distribute under the terms of either the GNU
+  * Lesser General Public License or the Mozilla Public
+  * License, as specified in the README file.
+@@ -19,6 +19,7 @@
+ #include <ctype.h>
+ #include <locale.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <libxml/xpath.h>
+ #include "lt-config.h"
+ #include "lt-database.h"
+@@ -1067,13 +1068,13 @@ _lt_tag_convert_privaseuse_from_locale_modifier(const char *modifier)
+ 	/* XXX: think about how to get rid of the hardcoded mapping table */
+ 	static const char * const maps[][2] = {
+ 		/*
+-		 * Old mechanism to denote that the euro currency is in use, 
++		 * Old mechanism to denote that the euro currency is in use,
+ 		 * ignore it.
+ 		 */
+ 		{ "euro", NULL },
+ 		/*
+ 		 * http://www.mail-archive.com/cygwin@cygwin.com/msg97848.html
+-		 * 
++		 *
+ 		 * A modifier that indicates what width to assign to an
+ 		 * ambiguous width char, ignore it.
+ 		 *
+@@ -1082,7 +1083,7 @@ _lt_tag_convert_privaseuse_from_locale_modifier(const char *modifier)
+ 		{ "cjknarrow", NULL },
+ 		/*
+ 		 * http://www.geez.org/Collation/
+-		 * 
++		 *
+ 		 * Abegede Collation for Ge'ez (as opposed to Halehame, I believe)
+ 		 *
+ 		 * http://www.iana.org/assignments/language-subtag-registry has
+@@ -1094,7 +1095,7 @@ _lt_tag_convert_privaseuse_from_locale_modifier(const char *modifier)
+ 		{ "abegede", "abegede" },
+ 		/*
+ 		 * http://www.alvestrand.no/pipermail/ietf-languages/2006-September/005017.html
+-		 * 
++		 *
+ 		 * "iqtelif" Latin orthography
+ 		 *
+ 		 * Bit of a mess really. Unsure if tt-Latn is sufficient, i.e. if this is
+-- 
+2.53.0
+

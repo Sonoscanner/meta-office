@@ -8,10 +8,11 @@ LIC_FILES_CHKSUM = " \
 
 require libreoffice-version.inc
 
+# file://0001-Workaround-boost-library-detection-failures.patch
+# file://0002-Fix-build-with-icu-68.patch
+
 SRC_URI += " \
     git://github.com/dagwieers/unoconv.git;destsuffix=git/unoconv;name=unoconv;branch=master;protocol=https \
-    file://0001-Workaround-boost-library-detection-failures.patch \
-    file://0002-Fix-build-with-icu-68.patch \
 "
 SRCREV_unoconv = "260b815bf2c57118df439f381974f3f0987222a1"
 
@@ -33,12 +34,10 @@ EXTRA_OECONF = " \
     --disable-skia \
     ${@oe.utils.parallel_make_argument(d, '--with-parallelism=%d')} \
     \
-    --with-system-boost \
     --with-boost-date-time=boost_date_time \
     --with-boost-filesystem=boost_filesystem \
     --with-boost-locale=boost_locale\
     --with-boost-iostreams=boost_iostreams\
-    --with-boost-system=boost_system\
     \
     --with-system-cairo \
     --with-system-epoxy \
@@ -63,5 +62,8 @@ EXTRA_OECONF = " \
     --with-system-lpsolve \
     --with-system-mdds \
 "
+# Non working flag
+# --with-system-boost
+#  --with-boost-system=boost_system
 
 do_compile[network] = "1"

@@ -5,9 +5,9 @@ LIC_FILES_CHKSUM = " \
     file://COPYING.MPL;md5=815ca599c9df247a0c7f619bab123dad \
 "
 
-SRC_URI = "http://dev-www.libreoffice.org/src/${BPN}-${PV}.tar.xz"
-SRC_URI[md5sum] = "b49670696446f4e11cafa49ec566d54c"
-SRC_URI[sha256sum] = "13beb0c733bb1544a542b6ab1d9d205f218e9a2202d1d4cac056f79f6db74922"
+SRC_URI = "https://dev-www.libreoffice.org/src/${BPN}-${PV}.tar.xz"
+SRC_URI[md5sum] = "f85851a0de1da6ff61c096223debb39d"
+SRC_URI[sha256sum] = "365b968e270e85a8469c6b160aa6af5619a4e6c995dbb04c1ecc1b4dd13e80de"
 
 inherit autotools-brokensep pkgconfig
 
