@@ -1,7 +1,7 @@
 From f224d4004c360835720a361a518b8f61f046eae4 Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
 Date: Thu, 17 Sep 2026 11:02:28 +0200
-Subject: [PATCH 04/12] Skip -isystem check
+Subject: [PATCH] Skip -isystem check
 
 It injects host path:
 | ERROR: libreoffice-7.3.0.3-r0 do_configure: QA Issue: This autoconf log indicates errors, it looked at host include and/or library paths while determining system capabilities.

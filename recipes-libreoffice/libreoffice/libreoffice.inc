@@ -8,9 +8,6 @@ LIC_FILES_CHKSUM = " \
 
 require libreoffice-version.inc
 
-# file://0001-Workaround-boost-library-detection-failures.patch
-# file://0002-Fix-build-with-icu-68.patch
-
 SRC_URI += " \
     git://github.com/dagwieers/unoconv.git;destsuffix=git/unoconv;name=unoconv;branch=master;protocol=https \
 "

@@ -1,7 +1,7 @@
 From 01d8eede5bbf3002dca0c4fafddc6aee521b586d Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
 Date: Thu, 17 Sep 2026 10:46:21 +0200
-Subject: [PATCH 03/12] Makefile.in: avoid building target cross-toolset
+Subject: [PATCH] Makefile.in: avoid building target cross-toolset
 
 ---
  Makefile.in | 2 +-

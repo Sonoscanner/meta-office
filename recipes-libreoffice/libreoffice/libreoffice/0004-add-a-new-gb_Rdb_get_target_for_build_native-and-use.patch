@@ -1,9 +1,9 @@
-From b40c0537c35d8ed2e6024ddd84669ef6c4ec2118 Mon Sep 17 00:00:00 2001
+From 21a3d3a649edb8f9e5672fd4f2225bf49a7bfdb3 Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
-Date: Fri, 18 Sep 2026 12:21:41 +0200
-Subject: [PATCH 08/12] add a new gb_Rdb_get_target_for_build_native and use it
-  i18npool/CustomTarget_localedata
+Date: Fri, 25 Sep 2026 11:05:31 +0200
+Subject: [PATCH] add a new gb_Rdb_get_target_for_build_native and use it
 
+i18npool/CustomTarget_localedata
 ---
  i18npool/CustomTarget_localedata.mk | 2 +-
  solenv/gbuild/TargetLocations.mk    | 1 +
@@ -23,7 +23,7 @@ index 5a6b677c8..1ab767525 100644
  
  .PRECIOUS: $(gb_CustomTarget_workdir)/i18npool/localedata/localedata_%_new.cxx
 diff --git a/solenv/gbuild/TargetLocations.mk b/solenv/gbuild/TargetLocations.mk
-index b0fe40419..cac76fbca 100644
+index fbad3c932..88eee006c 100644
 --- a/solenv/gbuild/TargetLocations.mk
 +++ b/solenv/gbuild/TargetLocations.mk
 @@ -186,6 +186,7 @@ gb_Pyuno_get_final_target = $(WORKDIR)/Pyuno/$(1).final

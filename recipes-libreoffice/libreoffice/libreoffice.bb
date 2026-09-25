@@ -4,32 +4,22 @@ inherit gobject-introspection bash-completion gtk-icon-cache mime mime-xdg
 
 MIME_XDG_PACKAGES = "${PN}"
 
-#- file://0001-configure.ac-skip-some-cross-compile-sections-they-d.patch
-#- file://0002-Makefile.in-avoid-building-target-cross-toolset.patch
-#- file://0003-remove-paths-for-gb_Executable_get_command.patch
-# file://0004-ensure-that-native-gendict-build-by-libreoffice-is-u.patch
-# file://0005-add-a-new-gb_Rdb_get_target_for_build_native-and-use.patch
-#- file://0006-Package.mk-workaround-icu-missing-error-for-without-.patch
-# file://0007-configure.ac-avoid-finding-calling-pg_config.patch
-#- file://0008-avoid-downloading-by-git-submodules.patch
-# file://0009-Use-wrappers-for-gobject-introspection.patch
-# file://0010-Support-install-to-find-bash-completion.in.patch
-#- file://0011-Skip-isystem-check.patch
-
 SRC_URI += " \
     http://download.documentfoundation.org/libreoffice/src/${DIRV}/${BPN}-translations-${PV}.tar.xz;name=translations \
-    file://0001-skip-some-cross-compile-sections-they-do-not.patch \
-    file://0002-remove-xinerama-lib-availability-check.patch \
-    file://0003-Makefile.in-avoid-building-target-cross-toolset.patch \
-    file://0004-Skip-isystem-check.patch \
-    file://0005-remove-paths-for-gb_Executable_get_command.patch \
-    file://0006-avoid-downloading-by-git-submodules.patch \
-    file://0007-Package.mk-workaround-icu-missing-error-for.patch \
-    file://0008-add-a-new-gb_Rdb_get_target_for_build_native-and-use.patch \
-    file://0009-use-native-path-for-rdb-saxparser.patch \
-    file://0010-replace-dict-src-path-for-cross-compilation.patch \
-    file://0011-Use-wrappers-for-gobject-introspection.patch \
-    file://0012-fix-error-with-undefined-reference-to-zlib.patch \
+    file://0001-configure.ac-skip-some-cross-compile-sections-they-d.patch \
+    file://0002-Makefile.in-avoid-building-target-cross-toolset.patch \
+    file://0003-remove-paths-for-gb_Executable_get_command.patch \
+    file://0004-add-a-new-gb_Rdb_get_target_for_build_native-and-use.patch \
+    file://0005-Package.mk-workaround-icu-missing-error-for-without-.patch \
+    file://0006-configure.ac-avoid-finding-calling-pg_config.patch \
+    file://0007-avoid-downloading-by-git-submodules.patch \
+    file://0008-Use-wrappers-for-gobject-introspection.patch \
+    file://0009-Support-install-to-find-bash-completion.in.patch \
+    file://0010-Skip-isystem-check.patch \
+    file://0011-remove-xinerama-lib-availability-check.patch \
+    file://0012-use-native-path-for-rdb-saxparser.patch \
+    file://0013-replace-dict-src-path-for-cross-compilation.patch \
+    file://0014-fix-error-with-undefined-reference-to-zlib.patch \
 "
 
 SRC_URI[translations.sha256sum] = "ed3575ba14fcd50fd52c61cb8c54ade2b57567cc916aa5c327b3c631192d345b"

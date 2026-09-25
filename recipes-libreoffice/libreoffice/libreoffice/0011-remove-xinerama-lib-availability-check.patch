@@ -1,7 +1,7 @@
 From f32fa69f3b1fe3f5cb47700c5c046e8685994ce7 Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
 Date: Thu, 17 Sep 2026 10:28:28 +0200
-Subject: [PATCH 02/12] remove xinerama lib availability check
+Subject: [PATCH] remove xinerama lib availability check
 
 ---
  configure.ac | 29 +++++------------------------

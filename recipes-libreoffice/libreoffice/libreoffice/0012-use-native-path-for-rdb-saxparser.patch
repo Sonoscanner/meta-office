@@ -1,7 +1,7 @@
 From 13bc027ebfe930d89e4144252fd5cda3ec2ca18f Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
 Date: Fri, 18 Sep 2026 16:06:26 +0200
-Subject: [PATCH 09/12] use native path for rdb saxparser
+Subject: [PATCH] use native path for rdb saxparser
 
 ---
  RepositoryExternal.mk | 2 +-

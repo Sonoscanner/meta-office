@@ -2,6 +2,7 @@ require ${BPN}.inc
 
 FILESEXTRAPATHS =. "${FILE_DIRNAME}/${PN}:"
 
+inherit gettext
 inherit native
 
 DEPENDS += " \
@@ -29,15 +30,13 @@ DEPENDS += " \
     mdds-3.0-native \
 "
 
-# file://0001-saxparser-output-calling-parametrs-for-debug.patch
-# file://0002-cppuhelper-defaultbootstrap-output-debug-information.patch
-# file://0003-add-gengal-debug-information.patch
-# file://0004-gengal-fix-path-to-redirectrc.patch
-# file://0005-Do-not-check-download-lib-unnecessary-for-native-bui.patch
-# file://0006-Do-not-fetch-fonts-for-native-tools.patch
-
 SRC_URI += " \
     file://0001-saxparser-output-calling-parametrs-for-debug.patch \
+    file://0002-cppuhelper-defaultbootstrap-output-debug-information.patch \
+    file://0003-add-gengal-debug-information.patch \
+    file://0004-gengal-fix-path-to-redirectrc.patch \
+    file://0005-Do-not-check-download-lib-unnecessary-for-native-bui.patch \
+    file://0006-Do-not-fetch-fonts-for-native-tools.patch \
 "
 
 EXTRA_OECONF += " \

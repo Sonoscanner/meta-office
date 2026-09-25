@@ -1,7 +1,7 @@
 From a24228162d6e487433d75e69a6bcd350d65a22e4 Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
 Date: Thu, 24 Sep 2026 11:31:07 +0200
-Subject: [PATCH 12/12] fix error with undefined reference to zlib
+Subject: [PATCH] fix error with undefined reference to zlib
 
 ---
  writerperfect/Library_wpftdraw.mk | 1 +

@@ -1,30 +1,26 @@
-From ecbbe1230e6cc2558cf0cacecb380d990b1aa65f Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Andreas=20M=C3=BCller?= <schnitzeltony@gmail.com>
-Date: Thu, 19 Aug 2021 15:35:53 +0200
-Subject: [PATCH] Do not check / download lib unnecessary for native build
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+From c23c76b110941434911a5632cea75f13284874f9 Mon Sep 17 00:00:00 2001
+From: Gaetan <g.depin@sonoscanner.fr>
+Date: Thu, 24 Sep 2026 17:52:55 +0200
+Subject: [PATCH 1/2] Do not check / download lib unnecessary for native build
 
-Signed-off-by: Andreas Müller <schnitzeltony@gmail.com>
 ---
  configure.ac | 56 ----------------------------------------------------
  1 file changed, 56 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 8babc85..8b910ff 100644
+index 9f67ee456..f3c3c7e74 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -9564,62 +9564,6 @@ libo_CHECK_SYSTEM_MODULE([xmlsec], [XMLSEC], [xmlsec1-nss >= 1.2.28])
- 
- libo_CHECK_SYSTEM_MODULE([eot],[LIBEOT],[libeot >= 0.01],disabled)
+@@ -10263,62 +10263,6 @@ else
+ fi
+ AC_SUBST([ENABLE_EOT])
  
 -dnl ===================================================================
 -dnl Check for DLP libs
 -dnl ===================================================================
 -REVENGE_CFLAGS_internal="-I${WORKDIR}/UnpackedTarball/librevenge/inc"
 -AS_IF([test "$COM" = "MSC"],
--      [librevenge_libdir="${WORKDIR}/LinkTarget/Library"],
+-      [librevenge_libdir='$(gb_Library_DLLDIR)'],
 -      [librevenge_libdir="${WORKDIR}/UnpackedTarball/librevenge/src/lib/.libs"]
 -)
 -REVENGE_LIBS_internal="-L${librevenge_libdir} -lrevenge-0.0"
@@ -36,7 +32,7 @@ index 8babc85..8b910ff 100644
 -
 -WPD_CFLAGS_internal="-I${WORKDIR}/UnpackedTarball/libwpd/inc"
 -AS_IF([test "$COM" = "MSC"],
--      [libwpd_libdir="${WORKDIR}/LinkTarget/Library"],
+-      [libwpd_libdir='$(gb_Library_DLLDIR)'],
 -      [libwpd_libdir="${WORKDIR}/UnpackedTarball/libwpd/src/lib/.libs"]
 -)
 -WPD_LIBS_internal="-L${libwpd_libdir} -lwpd-0.10"
@@ -45,7 +41,7 @@ index 8babc85..8b910ff 100644
 -libo_CHECK_SYSTEM_MODULE([libwpg],[WPG],[libwpg-0.3])
 -
 -libo_CHECK_SYSTEM_MODULE([libwps],[WPS],[libwps-0.4])
--libo_PKG_VERSION([WPS], [libwps-0.4], [0.4.12])
+-libo_PKG_VERSION([WPS], [libwps-0.4], [0.4.14])
 -
 -libo_CHECK_SYSTEM_MODULE([libvisio],[VISIO],[libvisio-0.1])
 -
@@ -79,5 +75,5 @@ index 8babc85..8b910ff 100644
  dnl Check for system lcms2
  dnl ===================================================================
 -- 
-2.35.3
+2.53.0
 

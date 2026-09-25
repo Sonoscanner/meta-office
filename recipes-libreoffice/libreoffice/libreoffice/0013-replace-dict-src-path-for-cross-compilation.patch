@@ -1,7 +1,7 @@
 From 01baccda4bb162ea3bfc7ac6e8d4898d479dd634 Mon Sep 17 00:00:00 2001
 From: Gaetan <g.depin@sonoscanner.fr>
 Date: Fri, 18 Sep 2026 17:42:14 +0200
-Subject: [PATCH 10/12] replace dict src path for cross compilation
+Subject: [PATCH] replace dict src path for cross compilation
 
 ---
  external/zxcvbn-c/ExternalProject_zxcvbn-c.mk | 2 +-
