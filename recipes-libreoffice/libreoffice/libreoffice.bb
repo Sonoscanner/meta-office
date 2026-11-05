@@ -217,7 +217,7 @@ FILES:${PN} += " \
     ${datadir}/mime \
 "
 
-PACKAGES =+ "${PN}-odk ${PN}-officekit"
+PACKAGES += "${PN}-odk ${PN}-officekit"
 
 FILES:${PN}-odk = "${libdir}/libreoffice/sdk"
 INSANE_SKIP:${PN}-odk += "dev-so staticdev"
