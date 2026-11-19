@@ -20,6 +20,7 @@ SRC_URI += " \
     file://0012-use-native-path-for-rdb-saxparser.patch \
     file://0013-replace-dict-src-path-for-cross-compilation.patch \
     file://0014-fix-error-with-undefined-reference-to-zlib.patch \
+    file://libreoffice.conf \
 "
 
 SRC_URI[translations.sha256sum] = "ed3575ba14fcd50fd52c61cb8c54ade2b57567cc916aa5c327b3c631192d345b"
@@ -209,6 +210,9 @@ do_install() {
         rm ${D}${libdir}/libreoffice/sdk/include
         ln -s -r ${D}${includedir}/libreoffice/ ${D}${libdir}/libreoffice/sdk/include
     fi
+
+
+    install -m 0644 -D ${WORKDIR}/libreoffice.conf ${D}${sysconfdir}/ld.so.conf.d/libreoffice.conf
 
     # remove some unneeded files
     rm -rf ${D}${libdir}/libreoffice/readmes
