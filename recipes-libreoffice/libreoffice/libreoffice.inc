@@ -24,6 +24,7 @@ DEPENDS += " \
     zip-native \
 "
 
+# https://wiki.documentfoundation.org/Development/Configuration_options
 EXTRA_OECONF = " \
     --without-doxygen \
     --enable-release-build \

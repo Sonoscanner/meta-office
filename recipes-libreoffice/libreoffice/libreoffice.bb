@@ -204,6 +204,12 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/git/unoconv/unoconv ${D}/${bindir}
 
+    # fix sdk symlink
+    if [ -e ${D}${libdir}/libreoffice/sdk ]; then
+        rm ${D}${libdir}/libreoffice/sdk/include
+        ln -s -r ${D}${includedir}/libreoffice/ ${D}${libdir}/libreoffice/sdk/include
+    fi
+
     # remove some unneeded files
     rm -rf ${D}${libdir}/libreoffice/readmes
     rm -rf ${D}${libdir}/libreoffice/share/theme_definitions/ios
@@ -220,7 +226,9 @@ FILES:${PN} += " \
 PACKAGES += "${PN}-odk ${PN}-officekit"
 
 FILES:${PN}-odk = "${libdir}/libreoffice/sdk"
-INSANE_SKIP:${PN}-odk += "dev-so staticdev"
+INSANE_SKIP:${PN}-odk += "dev-so dev-elf staticdev"
+INSANE_SKIP += "dev-so"
+INSANE_SKIP:${PN}-dev += "dev-elf"
 
 FILES:${PN}-officekit = " \
     ${libdir}/girepository-1.0 \
